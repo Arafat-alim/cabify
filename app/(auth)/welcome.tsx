@@ -1,10 +1,55 @@
-import { Text } from "react-native";
+import CustomButton from "@/components/CustomButton";
+import { onboarding } from "@/constants";
+import { router } from "expo-router";
+import { useRef, useState } from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Swiper from "react-native-swiper";
 
 const Onboarding = () => {
+  const swiperRef = useRef<Swiper>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <SafeAreaView>
-      <Text>Onboarding</Text>
+    <SafeAreaView className="flex h-full justify-between bg-white items-center">
+      <TouchableOpacity
+        onPress={() => {
+          router.replace("/(auth)/sign-up");
+        }}
+        className="w-full justify-end items-end p-5"
+      >
+        <Text className="text-black text-md font-JakartaBold">Skip</Text>
+      </TouchableOpacity>
+
+      <Swiper
+        ref={swiperRef}
+        loop={false}
+        dot={<View className="w-[32px] h-[4px] mx-1 bg-[#E2E8F0]" />}
+        activeDot={
+          <View className="w-[32px] h-[4px] mx-1 bg-[#02F6FF] rounded-full" />
+        }
+        onIndexChanged={(index) => setActiveIndex(index)}
+      >
+        {onboarding.map((item) => (
+          <View key={item.id} className="flex justify-center items-center p-5">
+            <Image
+              source={item.image}
+              className="w-full h-[300px]"
+              resizeMode="contain"
+            />
+            <View className="flex flex-row justify-center items-center w-full mt-10">
+              <Text className="text-black text-2xl font-bold mx-10 text-center">
+                {item.title}
+              </Text>
+            </View>
+
+            <Text className="text-md font-JakartaSemiBold mt-3 text-center mx-10 text-[#858585]">
+              {item.description}
+            </Text>
+          </View>
+        ))}
+      </Swiper>
+      <CustomButton title="Next" />
     </SafeAreaView>
   );
 };
