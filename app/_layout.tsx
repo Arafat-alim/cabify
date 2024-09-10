@@ -42,6 +42,7 @@ export default function RootLayout() {
   }
 
   return (
+    // <ClerkProvider publishableKey={publishableKey}>
     <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <ClerkLoaded>
         <Stack>
