@@ -1,3 +1,5 @@
+import GoogleTextInput from "@/components/GoogleTextInput";
+import Map from "@/components/Map";
 import RideCar from "@/components/RideCar";
 import { icons, images } from "@/constants";
 import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
@@ -124,6 +126,9 @@ export default function Page() {
 
   const loading = true;
 
+  const handleSignOut = async () => {};
+  const handleDestinationPress = async () => {};
+
   return (
     <SafeAreaView>
       <FlatList
@@ -152,14 +157,37 @@ export default function Page() {
         ListHeaderComponent={() => (
           <>
             <View className="flex flex-row justify-between items-center my-5">
-              <Text className="text-md font-JakartaExtraBold">
-                Welcome{" "}
-                {user?.firstName || user?.emailAddresses[0].emailAddress} 👋
+              <Text className="text-xl font-JakartaExtraBold capitalize">
+                Welcome{", "}
+                {user?.firstName ||
+                  user?.emailAddresses[0].emailAddress
+                    .split("@")[0]
+                    .split(".")[0]}{" "}
+                👋
               </Text>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleSignOut}
+                className="w-10 h-10 justify-center items-center bg-white rounded-full"
+              >
                 <Image source={icons.out} className="w-4 h-4" />
               </TouchableOpacity>
             </View>
+            <GoogleTextInput
+              icon={icons.search}
+              containerStyle="bg-white shadow-md shadow-neutral-300"
+              handlePress={handleDestinationPress}
+            />
+            <>
+              <Text className="text-xl font-JakartaBold mt-5 mb-3">
+                Your current location
+              </Text>
+              <View className="flex flex-row items-center bg-transparent h-[300px]">
+                <Map />
+              </View>
+            </>
+            <Text className="text-xl font-JakartaBold mt-5 mb-3">
+              Recent Rides
+            </Text>
           </>
         )}
       />
