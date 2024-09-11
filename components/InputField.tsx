@@ -1,4 +1,4 @@
-import { InputFieldProps } from "@/types/image";
+import { InputFieldProps } from "@/types/type";
 import {
   Image,
   Keyboard,
