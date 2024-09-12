@@ -137,11 +137,7 @@ export default function Page() {
     longitude: number;
     address: string;
   }) => {
-    setDestinationLocation({
-      latitude: location.latitude,
-      longitude: location.longitude,
-      address: location.address,
-    });
+    setDestinationLocation(location);
 
     router.push("/(root)/find-ride");
   };
