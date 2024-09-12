@@ -4,7 +4,7 @@ import RideCar from "@/components/RideCar";
 import { icons, images } from "@/constants";
 import { useLocationStore } from "@/store";
 import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
 import {
@@ -132,7 +132,19 @@ export default function Page() {
   const [hasPermission, setHasPermission] = useState(false);
 
   const handleSignOut = async () => {};
-  const handleDestinationPress = async () => {};
+  const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation({
+      latitude: location.latitude,
+      longitude: location.longitude,
+      address: location.address,
+    });
+
+    router.push("/(root)/find-ride");
+  };
 
   useEffect(() => {
     const requestLocation = async () => {
