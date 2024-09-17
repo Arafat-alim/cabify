@@ -2,13 +2,30 @@ import { Alert, Text, View } from "react-native";
 import CustomButton from "./CustomButton";
 import { PaymentSheetError, useStripe } from "@stripe/stripe-react-native";
 import { useEffect, useState } from "react";
+import { fetchApi } from "@/lib/fetch";
 
-const Payment = () => {
+const Payment = ({ fullName, email, amount, driverId, time }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
-  const confirmHandler = async () => {};
+  const confirmHandler = async (paymentMethod, _, intentCreationCallback) => {
+    const { paymentIntent, customer } = await fetchApi(
+      "/(auth)/(stripe)create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: fullName,
+          email: email,
+          amount: amount,
+          paymentMethodId: paymentMethod.id,
+        }),
+      }
+    );
+  };
 
   const initializePaymentSheet = async () => {
     // const { paymentIntent, ephemeralKey, customer } =
