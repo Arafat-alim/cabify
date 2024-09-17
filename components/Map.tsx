@@ -70,9 +70,11 @@ const Map = () => {
     destinationLongitude,
   });
 
-  const { selectedDriver } = useDriverStore();
+  const { selectedDriver, setDrivers } = useDriverStore();
 
   useEffect(() => {
+    //! TODO: remove
+    setDrivers(drivers);
     if (Array.isArray(drivers)) {
       if (!userLatitude || !userLongitude) return;
 
