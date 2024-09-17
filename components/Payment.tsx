@@ -3,28 +3,48 @@ import CustomButton from "./CustomButton";
 import { PaymentSheetError, useStripe } from "@stripe/stripe-react-native";
 import { useEffect, useState } from "react";
 import { fetchApi } from "@/lib/fetch";
+import { PaymentProps } from "@/types/type";
 
-const Payment = ({ fullName, email, amount, driverId, time }) => {
+const Payment = ({ fullName, email, amount, driverId, time }: PaymentProps) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
   const confirmHandler = async (paymentMethod, _, intentCreationCallback) => {
     const { paymentIntent, customer } = await fetchApi(
-      "/(auth)/(stripe)create",
+      "/(api)/(stripe)create",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: fullName,
+          name: fullName || email.split("@")[0],
           email: email,
           amount: amount,
           paymentMethodId: paymentMethod.id,
         }),
       }
     );
+
+    //! if payment intended and client secret id is generated then we can call our new pay api
+    if (paymentIntent.client_secret) {
+      const { result } = await fetchApi("/(api)/(stripe)/pay", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          payment_method_id: paymentMethod.id,
+          payment_intend_id: paymentIntent.id,
+          customer_id: customer,
+        }),
+      });
+
+      if (result.client_secret) {
+        // ! create ride
+      }
+    }
   };
 
   const initializePaymentSheet = async () => {
