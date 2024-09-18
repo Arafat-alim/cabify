@@ -17,19 +17,19 @@ export const fetchApi = async (url: string, options?: RequestInit) => {
 
 //! This helper function will help us to call GET method
 
-export const useFetch = <T>(url: string, options: RequestInit) => {
+export const useFetch = <T>(url: string, options?: RequestInit) => {
   const [data, setData] = useState<T | null>(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchData = useCallback(async () => {
-    setLoading(false);
+    setLoading(true);
     setError(null);
+
     try {
-      const result = await useFetch(url, options);
+      const result = await fetchApi(url, options);
       setData(result.data);
     } catch (err) {
-      setLoading(false);
       setError((err as Error).message);
     } finally {
       setLoading(false);
@@ -40,5 +40,5 @@ export const useFetch = <T>(url: string, options: RequestInit) => {
     fetchData();
   }, [fetchData]);
 
-  return { data, error, loading, refetch: fetchData };
+  return { data, loading, error, refetch: fetchData };
 };
