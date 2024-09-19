@@ -99,7 +99,7 @@ const BookRide = () => {
             email={user?.emailAddresses[0].emailAddress!}
             amount={driverDetails?.price!}
             driverId={driverDetails?.id!}
-            time={driverDetails?.time!}
+            rideTime={driverDetails?.time!}
           />
         </ScrollView>
       </RideLayout>
