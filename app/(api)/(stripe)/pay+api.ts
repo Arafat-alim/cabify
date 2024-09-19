@@ -4,17 +4,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(request: Request) {
   try {
-    // ! if all above things went good that mean we made a successful payment
-    //! extract bidy from the request
     const body = await request.json();
-    const { payment_method_id, payment_intend_id, customer_id, client_secret } =
+    const { payment_method_id, payment_intent_id, customer_id, client_secret } =
       body;
 
-    if (!payment_method_id || !payment_intend_id || !customer_id) {
+    if (!payment_method_id || !payment_intent_id || !customer_id) {
       return new Response(
-        JSON.stringify({
-          error: "Missing required payment information",
-        }),
+        JSON.stringify({ error: "Missing required fields" }),
         { status: 400 }
       );
     }
@@ -24,7 +20,7 @@ export async function POST(request: Request) {
       { customer: customer_id }
     );
 
-    const result = await stripe.paymentIntents.confirm(payment_intend_id, {
+    const result = await stripe.paymentIntents.confirm(payment_intent_id, {
       payment_method: paymentMethod.id,
     });
 
@@ -32,13 +28,12 @@ export async function POST(request: Request) {
       JSON.stringify({
         success: true,
         message: "Payment successful",
-        result,
+        result: result,
       })
     );
   } catch (error) {
-    console.log("Error occured while paying: ", error);
-
-    return new Response(JSON.stringify({ error: "Internal Server error" }), {
+    console.error("Error paying:", error);
+    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
     });
   }
