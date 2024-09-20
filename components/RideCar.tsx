@@ -56,7 +56,7 @@ const RideCar = ({
               Driver
             </Text>
             <Text className="text-md font-JakartaMedium text-gray-500">
-              {driver.first_name} {driver.last_name}
+              {driver?.first_name} {driver?.last_name}
             </Text>
           </View>
           <View className="flex flex-row items-center justify-between w-full mb-5">
@@ -64,7 +64,7 @@ const RideCar = ({
               Car Seats
             </Text>
             <Text className="text-md font-JakartaMedium text-gray-500">
-              {driver.car_seats}
+              {driver?.car_seats}
             </Text>
           </View>
           <View className="flex flex-row items-center justify-between w-full mb-5">
