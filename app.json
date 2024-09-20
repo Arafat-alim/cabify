@@ -13,13 +13,14 @@
       "backgroundColor": "#2f80ed"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "relatedtocabify.cabify"
     },
     "android": {
       "package": "relatedtocabify.cabify",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "transparent"
+        "backgroundColor": "#FFFFFF" // Replace with a valid hex color
       }
     },
     "web": {
@@ -27,9 +28,21 @@
       "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": [["expo-router", { "origin": "https://uber.com" }]],
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://uber.com"
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "61a3b618-95a3-45ea-a7e1-33d2a38751ef"
+      }
     }
   }
 }
