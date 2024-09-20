@@ -1,16 +1,9 @@
 import RideCar from "@/components/RideCar";
-import { icons, images } from "@/constants";
+import { images } from "@/constants";
 import { useFetch } from "@/lib/fetch";
 import { Ride } from "@/types/type";
 import { useUser } from "@clerk/clerk-expo";
-import {
-  ActivityIndicator,
-  FlatList,
-  Image,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Rides = () => {
@@ -23,7 +16,8 @@ const Rides = () => {
   return (
     <SafeAreaView>
       <FlatList
-        data={recentRides}
+        data={[]}
+        // data={recentRides}
         className={"p-5"}
         // className={`px-5 ${recentRides.length < 0 && "flex justify-center items-center h-full"}`}
         renderItem={({ item }) => <RideCar ride={item} />}
@@ -33,10 +27,11 @@ const Rides = () => {
               <>
                 <Image
                   source={images.noResult}
-                  className="w-40 h-40"
+                  className="w-[300px] h-[300px]"
                   alt="No recent rides found"
                   resizeMode="contain"
                 />
+                <Text className="text-sm">No recent ride found!</Text>
               </>
             ) : (
               <ActivityIndicator size="small" color="#000" />
