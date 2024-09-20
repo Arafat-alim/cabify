@@ -19,8 +19,10 @@ const InputField = ({
   secureTextEntry = false,
   containerStyle,
   className,
+  placeholderTextColor,
   ...props
 }: InputFieldProps) => {
+  console.log("placeholderTextColor", placeholderTextColor);
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -39,6 +41,7 @@ const InputField = ({
             <TextInput
               className={`rounded-full p-4 font-JakartaSemiBold text-[15px] flex-1 text-left ${inputStyle}`}
               secureTextEntry={secureTextEntry}
+              placeholderTextColor={placeholderTextColor}
               {...props}
             />
           </View>
