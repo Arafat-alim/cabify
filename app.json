@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Uber",
-    "slug": "uber",
+    "name": "Cabify",
+    "slug": "cabify",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "relatedtocabify.cabify",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "transparent"
