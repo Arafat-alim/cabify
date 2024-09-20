@@ -16,10 +16,8 @@ const Rides = () => {
   return (
     <SafeAreaView>
       <FlatList
-        data={[]}
-        // data={recentRides}
+        data={recentRides}
         className={"p-5"}
-        // className={`px-5 ${recentRides.length < 0 && "flex justify-center items-center h-full"}`}
         renderItem={({ item }) => <RideCar ride={item} />}
         ListEmptyComponent={() => (
           <View className="flex flex-col justify-center items-center h-full w-full">
