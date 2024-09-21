@@ -21,6 +21,10 @@ const Chat = () => {
           <Text className="text-base mt-2 text-center px-7">
             Start a conversation with your friends and family
           </Text>
+          <Text className="text-sm mt-5 text-center px-7">
+            Note: This app is in an early phase; this feature will be enabled
+            soon in the future.
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
