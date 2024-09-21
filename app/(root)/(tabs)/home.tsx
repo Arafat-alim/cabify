@@ -55,9 +55,13 @@ export default function Page() {
 
       let location = await Location.getCurrentPositionAsync();
       let address = await Location.reverseGeocodeAsync({
-        latitude: location.coords?.latitude!,
-        longitude: location.coords?.longitude!,
+        latitude: 37.78825,
+        longitude: -122.4324,
       });
+      // let address = await Location.reverseGeocodeAsync({
+      //   latitude: location.coords?.latitude!,
+      //   longitude: location.coords?.longitude!,
+      // });
 
       setUserLocation({
         // latitude: location.coords.latitude,
