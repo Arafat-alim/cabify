@@ -1,19 +1,37 @@
 {
   "cli": {
-    "version": ">= 12.4.1",
+    "version": ">= 3.0.0",
     "appVersionSource": "remote"
   },
   "build": {
     "preview": {
       "distribution": "internal",
       "env": {
-        "ANDROID_HOME": "/Users/user/AppData/Local/Android/Sdk"
+        "ANDROID_HOME": "C:/Users/user/AppData/Local/Android/Sdk", // Windows path format
+        "EXPO_DEBUG": "true"
       },
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "jsEngine": "hermes",
+        "enableProguardInReleaseBuilds": true,
+        "gradleCommand": ":app:assembleRelease",
+        "artifactPath": "android/app/build/outputs/apk/release/app-release.apk"
       }
     },
-    "production": {}
+    "production": {
+      "distribution": "store",
+      "env": {
+        "ANDROID_HOME": "C:/Users/user/AppData/Local/Android/Sdk",
+        "EXPO_OPTIMIZE_ASSETS": "true"
+      },
+      "android": {
+        "buildType": "apk",
+        "jsEngine": "hermes",
+        "enableProguardInReleaseBuilds": true,
+        "gradleCommand": ":app:assembleRelease",
+        "artifactPath": "android/app/build/outputs/apk/release/app-release.apk"
+      }
+    }
   },
   "submit": {
     "production": {}
