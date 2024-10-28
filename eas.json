@@ -4,19 +4,16 @@
     "appVersionSource": "remote"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
     "preview": {
-      "distribution": "internal"
-    },
-    "production": {
-      "autoIncrement": true,
+      "distribution": "internal",
+      "env": {
+        "ANDROID_HOME": "/Users/user/AppData/Local/Android/Sdk"
+      },
       "android": {
         "buildType": "apk"
       }
-    }
+    },
+    "production": {}
   },
   "submit": {
     "production": {}
