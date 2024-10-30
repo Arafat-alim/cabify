@@ -20,8 +20,9 @@
       "package": "relatedtocabify.cabify",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF" // Replace with a valid hex color
-      }
+        "backgroundColor": "#FFFFFF"
+      },
+      "jsEngine": "hermes" // Add this line
     },
     "web": {
       "bundler": "metro",
