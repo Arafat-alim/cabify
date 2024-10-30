@@ -7,18 +7,16 @@
     "preview": {
       "distribution": "internal",
       "env": {
-        "ANDROID_HOME": "C:/Users/user/AppData/Local/Android/Sdk", // Windows path format
+        "ANDROID_HOME": "C:/Users/user/AppData/Local/Android/Sdk",
         "EXPO_DEBUG": "true"
       },
       "android": {
         "buildType": "apk",
-        "jsEngine": "hermes",
-        "enableProguardInReleaseBuilds": true,
         "gradleCommand": ":app:assembleRelease",
         "artifactPath": "android/app/build/outputs/apk/release/app-release.apk"
       }
     },
-    "production": {
+    "staging": {
       "distribution": "store",
       "env": {
         "ANDROID_HOME": "C:/Users/user/AppData/Local/Android/Sdk",
@@ -26,8 +24,6 @@
       },
       "android": {
         "buildType": "apk",
-        "jsEngine": "hermes",
-        "enableProguardInReleaseBuilds": true,
         "gradleCommand": ":app:assembleRelease",
         "artifactPath": "android/app/build/outputs/apk/release/app-release.apk"
       }
