@@ -1,5 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 
+// ! Help us to fetch the APIs
 export async function GET() {
   try {
     const sql = neon(process.env.DATABASE_URL!);
