@@ -35,23 +35,19 @@ jobs:
       - name: Install Expo CLI and EAS CLI
         run: npm install -g expo-cli eas-cli
 
-      # Step 6: Authenticate with EAS using the token
-      - name: Authenticate with EAS
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: echo "$EXPO_TOKEN" | eas login --token -
-
-      # Step 7: Install project dependencies with Yarn
+      # Step 6: Install project dependencies with Yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      # Step 8: Build the Android APK using EAS
+      # Step 7: Build the Android APK using EAS with EXPO_TOKEN for authentication
       - name: Build Android app
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           eas build --platform android --profile preview --local --output ${{ github.workspace }}/app-release.apk
         continue-on-error: false # Ensures the job fails on build error
 
-      # Step 9: Upload the generated APK file as an artifact for download
+      # Step 8: Upload the generated APK file as an artifact for download
       - name: Upload APK artifact
         if: success() # Run only if the build step succeeded
         uses: actions/upload-artifact@v4 # Updated to v4 to avoid deprecation
