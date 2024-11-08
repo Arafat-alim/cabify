@@ -1,6 +1,6 @@
-# Cabify - Real-Time Ridesharing App 🚖
+# Cabify - UBER-LIKE RIDE 🚖
 
-![Cabify Banner](path/to/banner-image.png) <!-- Add a visually engaging banner image -->
+![Cabify Banner](https://res.cloudinary.com/cocoder/image/upload/v1731102118/Projects/Cabify/Discover_Your_rp2dlo.gif) <!-- Add a visually engaging banner image -->
 
 ## Table of Contents
 
@@ -17,7 +17,8 @@
 ---
 
 ## Project Overview
-Cabify is a feature-rich, real-time ridesharing application designed to deliver a seamless and dynamic user experience similar to leading ride-hailing platforms. Built with modern technologies, Cabify allows users to book rides, track locations, and engage with a real-time map interface. The app offers secure user authentication, payment integration, and responsive design, making it scalable and user-friendly.
+
+Cabify is a feature-rich, application designed to deliver a seamless and dynamic user experience similar to leading ride-hailing platforms. Built with modern technologies, Cabify allows users to book rides, track locations, and engage with a real-time map interface. The app offers secure user authentication, payment integration, and responsive design, making it scalable and user-friendly.
 
 ---
 
@@ -28,7 +29,6 @@ Cabify is a feature-rich, real-time ridesharing application designed to deliver 
 - **Interactive Map Integration**: Real-time GPS location and nearby drivers shown using Google Maps and Places API.
 - **Ride History & Profile Management**: View past rides and manage user profile data seamlessly.
 - **Stripe Payment Integration**: Enable smooth and secure ride payments.
-- **Responsive Design**: Optimized for iOS, Android, and web devices.
 - **Custom Navigation**: Enhanced navigation with bottom sheets, modals, and multi-tab screens.
 
 ---
@@ -51,6 +51,7 @@ Cabify is a feature-rich, real-time ridesharing application designed to deliver 
 To get started with Cabify locally:
 
 ### Prerequisites
+
 - Node.js and npm
 - Expo CLI installed
 
