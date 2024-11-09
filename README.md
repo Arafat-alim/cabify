@@ -1,8 +1,8 @@
 <div align="center">
 	<h1>Cabify - UBER-LIKE RIDE 🚖✨</h1>
 	
-	<img  src="https://res.cloudinary.com/cocoder/image/upload/v1731102118/Projects/Cabify/Discover_Your_rp2dlo.gif" alt="banner"/>
-	<br/>
+   <img src="https://res.cloudinary.com/cocoder/image/upload/v1731102118/Projects/Cabify/Discover_Your_rp2dlo.gif" alt="banner"/>
+
    <div>
 		<img src="https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black" alt="React"/>
 		<img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white" alt="Tailwind CSS"/>
