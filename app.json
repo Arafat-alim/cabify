@@ -20,7 +20,7 @@
       "package": "relatedtocabify.cabify",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF" // Replace with a valid hex color
+        "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
@@ -33,6 +33,15 @@
         "expo-router",
         {
           "origin": "https://uber.com"
+        }
+      ],
+      "sentry-expo",
+      [
+        "@sentry/react-native/expo",
+        {
+          "organization": "owner-at-blumerge",
+          "project": "react-native-cabify",
+          "url": "https://sentry.io/"
         }
       ]
     ],
